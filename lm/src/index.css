@@ -1,0 +1,24 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+:root { color-scheme: dark; }
+html, body, #root { background: #000; color: #fff; min-height: 100dvh; }
+body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; -webkit-tap-highlight-color: transparent; overscroll-behavior-y: none; }
+button { -webkit-user-select: none; user-select: none; }
+.glass { background: rgba(255,255,255,.09); backdrop-filter: blur(24px) saturate(170%); -webkit-backdrop-filter: blur(24px) saturate(170%); border: 1px solid rgba(255,255,255,.14); box-shadow: inset 0 1px 0 rgba(255,255,255,.16), 0 10px 36px rgba(0,0,0,.45); }
+.tile { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.08); }
+.press { transition: transform .18s cubic-bezier(.3,1.4,.5,1); } .press:active { transform: scale(.95); }
+.lift { transition: transform .25s cubic-bezier(.2,.8,.2,1); } @media (hover:hover) { .lift:hover { transform: translateY(-4px); } }
+.no-scrollbar::-webkit-scrollbar { display: none; } .no-scrollbar { scrollbar-width: none; }
+.shimmer { background: linear-gradient(100deg, rgba(255,255,255,.05) 30%, rgba(255,255,255,.13) 50%, rgba(255,255,255,.05) 70%) 0 0/200% 100%; animation: sh 1.4s infinite linear; }
+@keyframes sh { to { background-position: -200% 0; } }
+.page { animation: rise .45s cubic-bezier(.2,.8,.2,1) both; }
+.rise { animation: rise .55s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(var(--i, 0) * 60ms); }
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+.cv { content-visibility: auto; contain-intrinsic-size: 1px 300px; }
+.seek { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: 9px; outline: none; cursor: pointer; background: linear-gradient(to right, #fff var(--p,0%), rgba(255,255,255,.25) var(--p,0%)); }
+.seek::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.5); }
+.seek::-moz-range-thumb { width: 14px; height: 14px; border: 0; border-radius: 50%; background: #fff; }
+.eq i { display: inline-block; width: 3px; height: 14px; margin-right: 2px; border-radius: 2px; background: #fff; transform-origin: bottom; animation: eq .9s ease-in-out infinite; }
+.eq i:nth-child(2) { animation-delay: .2s } .eq i:nth-child(3) { animation-delay: .4s }
+.eq.off i { animation-play-state: paused; transform: scaleY(.3); }
+@keyframes eq { 0%,100% { transform: scaleY(.25) } 50% { transform: scaleY(1) } }
+@media (prefers-reduced-motion: reduce) { *, ::before, ::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
